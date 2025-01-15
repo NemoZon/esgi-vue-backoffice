@@ -1,5 +1,20 @@
-# Vue 3 + Vite
+# ESGI IW S1: BACK-OFFICE
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## Auteur: BUSHUKIN Gleb
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+## Description
+
+*L'objectif principal de ce projet est de mettre en place un espace administratif pour la gestion des données des étudiants.*
+
+## Version
+
+*1.0*
+
+## Structuration
+
+- **public :** Ce dossier contient les fichiers statiques accessibles publiquement
+- **src :** Ce dossier contient le code source de l'application.
+  - **assets :** Ce sous-dossier contient les ressources statiques comme les images, les fichiers CSS et les polices.
+  - **components :** Ce sous-dossier contient les composants Vue.js réutilisables.
+  - **pages :** Ce sous-dossier contient les composants Vue.js représentant les pages de l'application.
+
