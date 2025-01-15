@@ -1,19 +1,15 @@
-<template>
-  <LoginForm />
-</template>
-
 <script>
-import LoginForm from '../components/LoginForm.vue';
+import { defineComponent } from 'vue';
+import LoginForm from '@/components/LoginForm.vue';
 
-export default {
+export default defineComponent({
   name: 'LoginPage',
   components: {
     LoginForm
   },
-  data() {
-    return {
-      msg: 'Welcome to Login Page'
-    };
-  }
-};
+});
 </script>
+
+<template>
+  <LoginForm />
+</template>

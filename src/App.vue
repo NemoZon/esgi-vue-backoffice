@@ -1,7 +1,13 @@
-<script setup>
-  import LoginPage from './pages/LoginPage.vue'
+<script setup lang="ts">
+  import NavBar from './components/NavBar.vue';
+  import LayoutPage from './pages/LayoutPage.vue';
 </script>
 
 <template>
-  <LoginPage />
+  <LayoutPage>
+    <template #header>
+      <NavBar></NavBar>
+    </template>
+    <RouterView />
+  </LayoutPage>
 </template>
