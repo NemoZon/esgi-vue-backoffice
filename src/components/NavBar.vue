@@ -35,9 +35,9 @@ export default {
                 <RouterLink
                     v-if="session.isLogin"
                     class="text-white hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
-                    to="/articles"
+                    to="/"
                 >
-                    Articles
+                    Home
                 </RouterLink>
             </div>
         </div>

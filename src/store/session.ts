@@ -1,13 +1,13 @@
 import { defineStore } from "pinia";
-import type { User } from "./user";
+import type { UserDTO } from "./user";
 
 export interface SessionState {
-    user: User | null,
+    user: UserDTO | null,
     isLogin: boolean
 }
 
 export interface SessionActions {
-    login: (payload: {user: User}) => void,
+    login: (payload: {user: UserDTO}) => void,
     logout: () => void
 }
 
@@ -21,7 +21,7 @@ export const useSession = defineStore<'session', SessionState, {}, SessionAction
     ],
     state: (): SessionState => ({ user: null, isLogin: false }),
     actions: {
-        login: function(payload: {user: User}) {
+        login: function(payload: {user: UserDTO}) {
             this.user = payload.user
             this.isLogin = true
         },

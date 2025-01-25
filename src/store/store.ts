@@ -1,13 +1,13 @@
 import { reactive } from "vue";
-import { user, type User } from "./user";
+import { user, type UserDTO } from "./user";
 
 const state = reactive(user)
 
 export const store = {
-    get: <K extends keyof User>(prop: K) => {
+    get: <K extends keyof UserDTO>(prop: K) => {
         return state[prop]
     },
-    set:  <K extends keyof User>(prop: K, value: User[K]) => {
+    set:  <K extends keyof UserDTO>(prop: K, value: UserDTO[K]) => {
         state[prop] = value
     }
 }
