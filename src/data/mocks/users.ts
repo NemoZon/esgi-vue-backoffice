@@ -69,8 +69,8 @@ export const students: Student[] = [
     firstName: 'Jane',
     lastName: 'Doe',
     avatar: 'https://picsum.photos/200?random=3',
-    evaluations: ['A'],
-    absences: ['2021-10-01', '2021-10-02'],
+    evaluations: ['1'],
+    absences: ['1'],
     class: '1',
   },
   {
@@ -81,8 +81,8 @@ export const students: Student[] = [
     firstName: 'Bob',
     lastName: 'Smith',
     avatar: 'https://picsum.photos/200?random=1',
-    evaluations: ['B'],
-    absences: ['2021-10-03', '2021-10-04'],
+    evaluations: ['2'],
+    absences: [],
     class: '1',
   },
   {
@@ -93,8 +93,8 @@ export const students: Student[] = [
     firstName: 'David',
     lastName: 'Brown',
     avatar: 'https://picsum.photos/200?random=2',
-    evaluations: ['C'],
-    absences: ['2021-10-05', '2021-10-06'],
+    evaluations: ['3'],
+    absences: [],
     class: '1',
   }
 ];
