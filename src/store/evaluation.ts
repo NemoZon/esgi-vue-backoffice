@@ -31,6 +31,8 @@ export const useEvaluations = defineStore<'evaluations', EvaluationState, {}, Ev
         try {
           const evaluations = await getEvaluations();
           this.evaluations = evaluations.map((e) => ({ ...e, id: e._id }));
+          console.log("evaluations", evaluations);
+          
         } catch (error) {
           console.error(error);
           if (error instanceof Error) {
