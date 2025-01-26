@@ -36,7 +36,7 @@ export const speakers: Speaker[] = [
     firstName: 'John',
     lastName: 'Doe',
     avatar: 'avatar4.png',
-    objects: ['Object1', 'Object2']
+    objects: ['1']
   },
   {
     _id: '5',
@@ -46,7 +46,7 @@ export const speakers: Speaker[] = [
     firstName: 'Alice',
     lastName: 'Smith',
     avatar: 'avatar5.png',
-    objects: ['Object2', 'Object3']
+    objects: ['1', '3']
   },
   {
     _id: '8',
@@ -56,7 +56,7 @@ export const speakers: Speaker[] = [
     firstName: 'Charlie',
     lastName: 'Brown',
     avatar: 'avatar6.png',
-    objects: ['Object3']
+    objects: ['2']
   }
 ];
 
