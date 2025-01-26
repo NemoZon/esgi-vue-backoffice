@@ -1,3 +1,5 @@
+import { isAdmin, isSpeaker, isStudent } from "@/data/entities/User";
+import { getUsers } from "@/http/userAPI";
 import { defineStore } from "pinia";
 
 export interface UserDTO {
@@ -20,6 +22,7 @@ export interface StudentDTO extends UserDTO {
     avatar: string;
     evaluations: string[];
     absences: string[];
+    class: string;
 }
 
 export interface AdminDTO extends UserDTO {
@@ -38,9 +41,11 @@ export interface UsersState {
     admins: AdminDTO[];
     students: StudentDTO[];
     speakers: SpeakerDTO[];
+    error: Error | null;
 }
 
 export interface UsersActions {
+    fetchUsers: () => Promise<void>;
     addAdmins: (user: AdminDTO[]) => void;
     addStudents: (user: StudentDTO[]) => void;
     addSpeakers: (user: SpeakerDTO[]) => void;
@@ -51,18 +56,64 @@ export const useUsers = defineStore<'users', UsersState, {}, UsersActions>('user
         admins: [],
         students: [],
         speakers: [],
+        error: null,
     }),
     actions: {
-        addAdmins(admins: AdminDTO[]) {
-            this.admins.push(...admins);
+        async fetchUsers() {
+            try {
+                const usersFromAPI = await getUsers();
+                
+                this.students = usersFromAPI
+                .filter(isStudent)
+                .map((user) => ({
+                    id: user._id,
+                    firstName: user.firstName,
+                    lastName: user.lastName,
+                    email: user.email,
+                    role: user.role,
+                    avatar: user.avatar,
+                    evaluations: user.evaluations,
+                    absences: user.absences,
+                    class: user.class,
+                }));
+
+                this.admins = usersFromAPI
+                .filter(isAdmin)
+                .map((user) => ({
+                    id: user._id,
+                    email: user.email,
+                    role: user.role,
+                }));
+
+                this.speakers = usersFromAPI
+                .filter(isSpeaker)
+                .map((user) => ({
+                    id: user._id,
+                    email: user.email,
+                    role: user.role,
+                    firstName: user.firstName,
+                    lastName: user.lastName,
+                    avatar: user.avatar,
+                    objects: user.objects,
+                }));
+                console.log(this.students);
+                
+                
+            } catch (error) {
+                console.error(error);
+                if (error instanceof Error) {
+                    this.error = error;
+                }
+            }  
         },
-        addStudents(students: StudentDTO[]) {
-            console.log(students);
-            
-            this.students.push(...students);
+        addAdmins(admins: AdminDTO[]) {
+            this.admins = [...this.admins, ...admins];
+        },
+        addStudents(students: StudentDTO[]) {            
+            this.students = [...this.students, ...students];
         },
         addSpeakers(speakers: SpeakerDTO[]) {
-            this.speakers.push(...speakers);
+            this.speakers = [...this.speakers, ...speakers];
         },
     }
 });

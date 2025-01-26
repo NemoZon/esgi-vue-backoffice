@@ -5,8 +5,7 @@
       <div class="px-6 py-4">
         <div class="font-bold text-xl mb-2">{{ student.firstName }} {{ student.lastName }}</div>
         <p class="text-gray-700 text-base">{{ student.email }}</p>
-        <p class="text-gray-700 text-base">Role: {{ student.role }}</p>
-        <p class="text-gray-700 text-base">Evaluation: {{ student.evaluations }}</p>
+        <p class="text-gray-700 text-base">{{ classes.find((c) => student.class === c.id)?.title || 'No class' }}</p>
       </div>
     </div>
   </div>
@@ -15,9 +14,15 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import type { StudentDTO } from '@/store/user';
+import { useClasses } from '@/store/class';
 
 export default defineComponent({
   name: 'StudentCard',
+  setup() {
+    const classesState = useClasses();
+    const classes = classesState.classes;
+    return { classes };
+  },
   props: {
     student: {
       type: Object as () => StudentDTO,
@@ -26,9 +31,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style scoped>
-.container {
-  max-width: 600px;
-}
-</style>

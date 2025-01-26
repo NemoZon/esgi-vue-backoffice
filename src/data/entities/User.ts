@@ -20,6 +20,7 @@ export interface Student extends User {
   avatar: string;
   evaluations: string[];
   absences: string[];
+  class: string;
 }
 
 export interface Admin extends User {
