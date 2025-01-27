@@ -31,6 +31,7 @@ import { useEvaluations } from '@/store/evaluation';
 import type { StudentDTO } from '@/store/user';
 import Evaluation from '@/components/Evaluation.vue';
 import { useLessons } from '@/store/lesson';
+import { useObjects } from '@/store/object';
 
 export default defineComponent({
   name: 'StudentPage',
@@ -44,6 +45,7 @@ export default defineComponent({
     const absencesStore = useAbsences();
     const lessonsStore = useLessons();
     const evaluationsStore = useEvaluations();
+    const objectsStore = useObjects();
     const student = ref<StudentDTO | null>(null);
 
     if (!absencesStore.absences.length) {
@@ -54,6 +56,9 @@ export default defineComponent({
     }
     if (!evaluationsStore.evaluations.length) {
       evaluationsStore.fetchEvaluations();
+    }
+    if (!objectsStore.objects.length) {
+      objectsStore.fetchObjects();
     }
 
     onMounted(() => {

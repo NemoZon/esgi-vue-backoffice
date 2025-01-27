@@ -17,7 +17,7 @@ export interface ObjectActions {
   fetchObjects: () => Promise<void>;
 }
 
-export const useEvaluations = defineStore<'objects', ObjectState, {}, ObjectActions>('objects', {
+export const useObjects = defineStore<'objects', ObjectState, {}, ObjectActions>('objects', {
     state: (): ObjectState => ({
       objects: [],
       error: null,
