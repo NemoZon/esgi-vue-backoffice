@@ -1,6 +1,6 @@
 <template>
   <div>
-    <StudentsList />
+    <StudentsList v-if="!isStudent" />
   </div>
 </template>
 
@@ -9,14 +9,14 @@ import { defineComponent } from 'vue';
 import StudentsList from '@/components/StudentsList.vue';
 import { useSession } from '@/store/session';
 import { useRouter } from 'vue-router';
-import type { StudentDTO } from '@/store/user';
+import { useUsers, type StudentDTO } from '@/store/user';
 
 export default defineComponent({
   name: 'HomePage',
   components: {
     StudentsList
   },
-  mounted() {
+  setup() {
     const session = useSession();
     const router = useRouter();
 
@@ -24,6 +24,17 @@ export default defineComponent({
       console.log('User is not logged in');
       router.push({ name: 'Login' });
     }
-  }
+    const isStudent = session.user?.role === 'Student';
+
+    if (isStudent && session.user) {
+      console.log('User is not an admin');
+      router.push({ name: 'Student', params: { id: session.user.id } });
+    }
+
+    return {
+      session,
+      isStudent,
+    };
+  },
 });
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white p-4 mb-4">
-    <p><strong>Value:</strong> {{ evaluation.value }}</p>
+    <p><strong>Value:</strong> {{ evaluation.value }}/20</p>
     <p><strong>Lesson:</strong> {{ lessonTitle }}</p>
     <p><strong>Day:</strong> {{ day }}</p>
     <p><strong>Time:</strong> {{ startDate }} - {{ endDate }}</p>
